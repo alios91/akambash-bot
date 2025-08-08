@@ -1,9 +1,18 @@
 aiogram==3.4.1
 aiohttp==3.9.5
+magic-filter==1.0.12
+typing-extensions==4.11.0
+
+# pydantic и его ядро — версии с готовыми wheels (чтобы pip не лез собирать Rust)
+pydantic==2.7.2
+pydantic-core==2.18.3
+
 multidict==6.0.4
 yarl==1.9.4
 frozenlist==1.4.0
 aiosignal==1.3.1
 attrs==23.2.0
-wheel
 setuptools
+wheel
+
+s
