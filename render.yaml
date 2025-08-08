@@ -2,6 +2,6 @@ services:
   - type: web
     name: akambash-bot
     env: python
+    runtime: python-3.11.9
     buildCommand: pip install --upgrade pip setuptools wheel && pip install --no-cache-dir -r requirements.txt
     startCommand: python bot.py
-    runtime: python-3.11.9
