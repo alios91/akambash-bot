@@ -1,134 +1,99 @@
-# akambash_extra.py
-# Добавляет:
-# - /start: выбор RU/EN/TR + сразу первое слово
-# - reply-кнопку: слово / word / kelime
-# - /new и кнопка -> карточка AB + LAT + RU + TR
-# - инлайн «➡️ Ещё слово»
-from __future__ import annotations
-import json, random
-from pathlib import Path
+# akambash_extra.py — основной роутер Akambash + онлайн-перевод через Glosbe
 
+from __future__ import annotations
+
+# ===== aiogram / UI =====
+import asyncio
 from aiogram import Router, F
-from aiogram.filters import Command
+from aiogram.filters import Command, CommandObject
+from aiogram.enums import ParseMode
 from aiogram.types import (
     Message, CallbackQuery,
     ReplyKeyboardMarkup, KeyboardButton,
     InlineKeyboardMarkup, InlineKeyboardButton,
 )
 
-# --- словарь: сначала words.json, если нет — akambash_dict.json ---
-PRIMARY_DICT = Path("words.json")
-FALLBACK_DICT = Path("akambash_dict.json")
+router = Router(name="akambash_extra")
 
-def _dict_path() -> Path:
-    if PRIMARY_DICT.exists():
-        return PRIMARY_DICT
-    return FALLBACK_DICT
-
-# --- конфиг кнопок ---
-LABELS = {
-    "RU": {"word_btn": "слово", "placeholder": "Нажми — слово"},
-    "EN": {"word_btn": "word",  "placeholder": "Tap — word"},
-    "TR": {"word_btn": "kelime","placeholder": "Bas — kelime"},
-}
-WORD_TEXTS = {"слово", "word", "kelime"}
-
-def main_kb(lang: str | None) -> ReplyKeyboardMarkup:
-    lang = (lang or "RU").upper()
-    lbl = LABELS.get(lang, LABELS["RU"])
-    return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text=lbl["word_btn"])]],
+# ===== Базовые хэндлеры UI =====
+@router.message(Command("start"))
+async def cmd_start(message: Message):
+    kb = ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text="Слово")]],
         resize_keyboard=True,
-        input_field_placeholder=lbl["placeholder"],
+        one_time_keyboard=False,
+    )
+    await message.answer(
+        "Добро пожаловать в Akambash! Нажми «Слово» или пришли текст для перевода.",
+        reply_markup=kb
     )
 
-# --- кэш словаря + анти-повтор ---
-_USER_LANG: dict[int, str] = {}
-_RECENT: dict[int, list[int]] = {}
-_dict_cache: list[dict] | None = None
-
-def load_dict() -> list[dict]:
-    global _dict_cache
-    if _dict_cache is None:
-        p = _dict_path()
-        if not p.exists():
-            # создадим пустую заготовку, чтобы бот не падал
-            p.write_text("[]", encoding="utf-8")
-        _dict_cache = json.loads(p.read_text(encoding="utf-8"))
-        for i, row in enumerate(_dict_cache):
-            row.setdefault("id", i)
-    return _dict_cache
-
-def _pick_index(user_id: int, pool: int) -> int:
-    recent = set(_RECENT.get(user_id, []))
-    for _ in range(200):
-        idx = random.randrange(pool)
-        if idx not in recent:
-            _RECENT.setdefault(user_id, []).append(idx)
-            _RECENT[user_id] = _RECENT[user_id][-50:]
-            return idx
-    return 0
-
-def build_word_text(entry: dict) -> str:
-    ab  = entry.get("ab", "")
-    lat = entry.get("lat", "")
-    ru  = entry.get("ru", "")
-    tr  = entry.get("tr") or "—"
-    return (
-        "📚 <b>Новое слово</b>\n\n"
-        f"<b>AB:</b> {ab}\n"
-        f"<b>LAT:</b> {lat}\n"
-        f"<b>RU:</b> {ru}\n"
-        f"<b>TR:</b> {tr}"
-    )
+@router.message(F.text.in_(["Слово", "Word", "Kelime"]))
+async def handle_new_word(message: Message):
+    await message.answer("Чтобы проверить перевод, используй: /tr море")
 
 def more_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[[InlineKeyboardButton(text="➡️ Ещё слово", callback_data="word:more")]]
     )
 
-router = Router(name="akambash_extra")
-
-async def send_new_word(message: Message) -> None:
-    data = load_dict()
-    if not data:
-        await message.answer("Словарь пуст. Добавь записи в words.json или akambash_dict.json")
-        return
-    idx = _pick_index(message.from_user.id, len(data))
-    entry = data[idx]
-    await message.answer(build_word_text(entry), reply_markup=more_keyboard(), parse_mode="HTML")
-
-@router.message(Command("start"))
-async def cmd_start(message: Message):
-    kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Русский", callback_data="lang:RU")],
-        [InlineKeyboardButton(text="English", callback_data="lang:EN")],
-        [InlineKeyboardButton(text="Türkçe",  callback_data="lang:TR")],
-    ])
-    await message.answer("Привет! Выбери язык интерфейса:", reply_markup=kb)
-
-@router.callback_query(F.data.startswith("lang:"))
-async def cb_lang(callback: CallbackQuery):
-    code = callback.data.split(":", 1)[1]
-    _USER_LANG[callback.from_user.id] = code
-    await callback.message.answer("Клавиатура настроена.", reply_markup=main_kb(code))
-    await send_new_word(callback.message)
-    await callback.answer()
-
-@router.message(Command("new"))
-async def cmd_new(message: Message):
-    await send_new_word(message)
-
-@router.message(F.text.func(lambda s: s and s.strip().lower() in WORD_TEXTS))
-async def on_word_button(message: Message):
-    await send_new_word(message)
-
 @router.callback_query(F.data == "word:more")
-async def cb_more(callback: CallbackQuery):
-    if callback.message:
-        await send_new_word(callback.message)
-    await callback.answer()
+async def more_word(cb: CallbackQuery):
+    await cb.message.answer("Ещё слово — в разработке. Сейчас попробуй /tr море")
+    await cb.answer()
 
-def install(dp):
-    # Подключение роутера из этого файла
-    dp.include_router(router)
+# ===== Glosbe переводчик (усиленный) =====
+from collections import deque
+import html, re, json as _json
+import aiohttp
+from langdetect import detect, DetectorFactory
+DetectorFactory.seed = 0
+
+AK_GLOSBE_LOG = deque(maxlen=20)  # мини-лог попыток
+
+GL_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "ru,en;q=0.9,tr;q=0.7",
+    "Referer": "https://glosbe.com/",
+    "Connection": "keep-alive",
+}
+
+def _aklog(**kwargs):
+    AK_GLOSBE_LOG.append(kwargs)
+
+def detect_lang(text: str) -> str:
+    try:
+        code = detect(text)
+    except Exception:
+        return "ru"
+    return {"ru": "ru", "en": "en", "tr": "tr", "ab": "ab"}.get(code, "ru")
+
+# Заглушка SCII — подставь свою реализацию при готовности
+def scii_translit(ab_text: str) -> str:
+    return ab_text
+
+async def _gl_fetch(session: aiohttp.ClientSession, url: str) -> str:
+    last_err = None
+    for attempt in range(4):
+        try:
+            async with session.get(
+                url, headers=GL_HEADERS, allow_redirects=True,
+                timeout=aiohttp.ClientTimeout(total=12)
+            ) as r:
+                text = await r.text()
+                if r.status == 200 and text:
+                    return text
+                last_err = f"HTTP {r.status}"
+        except Exception as e:
+            last_err = f"{type(e).__name__}: {e}"
+        await asyncio.sleep(0.7 * (attempt + 1))
+    _aklog(stage="fetch_fail", url=url, error=last_err)
+    return ""
+
+def _gl_extract_next_data(html_text: str) -> dict:
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.+?)</script>',
+                  html_text, flags=re.DOTALL | re.IGNORECASE)
+    if not m:
+        return {}
+    try:
