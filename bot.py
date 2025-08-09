@@ -20,7 +20,8 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
 # Core Akambash router (start, buttons, vocab, /tr, auto-translate)
-import akambash_extra as extra
+from ak_extra import router as akambash_router
+import ak_extra as extra
 from akambash_extra import router as akambash_router
 
 # Optionally include your extra routers without failing if files are absent.
@@ -71,6 +72,25 @@ async def app_factory():
             "dir_sample": [n for n in dir(extra) if "translate" in n or "scii" in n][:16],
         })
     app.router.add_get("/debug_extra", debug_extra)
+
+# == TEMP: показать sha256 akambash_extra.py на сервере ==
+import hashlib, pathlib
+import akambash_extra as extra  # используем тот же модуль, что и в debug_extra
+
+async def extra_hash(_):
+    path = getattr(extra, '__file__', None)
+    try:
+        data = pathlib.Path(path).read_bytes()
+        digest = hashlib.sha256(data).hexdigest()
+    except Exception as e:
+        return web.json_response({'path': path, 'error': str(e)}, status=500)
+    return web.json_response({
+        'path': path,
+        'sha256': digest,
+        'has_translate': hasattr(extra, 'translate_to_abkhaz')
+    })
+
+app.router.add_get('/extra_hash', extra_hash)
 
     # Direct Glosbe test without Telegram (useful both locally and on Render)
     async def test_glosbe(request):
