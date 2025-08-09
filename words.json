@@ -1,0 +1,602 @@
+[
+  {
+    "ru": "догово́р",
+    "ab": "а́иқәшаҳаҭра",
+    "lat": "aiqəshahat'ra",
+    "tr": "sözleşme"
+  },
+  {
+    "ru": "абажу́р",
+    "ab": "ацәашьхагы́ла",
+    "lat": "atsəash'khagyla",
+    "tr": "abajur"
+  },
+  {
+    "ru": "аба́з",
+    "ab": "а́баз",
+    "lat": "abaz",
+    "tr": "abazi"
+  },
+  {
+    "ru": "абази́н",
+    "ab": "а́база",
+    "lat": "abaza",
+    "tr": "Abazin"
+  },
+  {
+    "ru": "абази́нский",
+    "ab": "а́база",
+    "lat": "abaza",
+    "tr": "Abazince"
+  },
+  {
+    "ru": "абба́т",
+    "ab": "абба́т",
+    "lat": "abbat",
+    "tr": "başrahip"
+  },
+  {
+    "ru": "аббревиату́ра",
+    "ab": "аббревиату́ра",
+    "lat": "abbreviatura",
+    "tr": "kısaltma"
+  },
+  {
+    "ru": "аббера́ция",
+    "ab": "а́хәанчара",
+    "lat": "akhəanchara",
+    "tr": "aberasyon"
+  },
+  {
+    "ru": "абжу́ец",
+    "ab": "абжьы́уа",
+    "lat": "abzh'yua",
+    "tr": "Abjuyalı"
+  },
+  {
+    "ru": "абжу́йский",
+    "ab": "абжьы́уатә",
+    "lat": "abzh'yuatə",
+    "tr": "Abjuyca"
+  },
+  {
+    "ru": "абза́ц",
+    "ab": "абза́ц",
+    "lat": "abzats",
+    "tr": "paragraf"
+  },
+  {
+    "ru": "абисси́нец",
+    "ab": "абисси́н",
+    "lat": "abissin",
+    "tr": "Habeş"
+  },
+  {
+    "ru": "абисси́нский",
+    "ab": "абисси́н",
+    "lat": "abissin",
+    "tr": "Habeş"
+  },
+  {
+    "ru": "абитурие́нт",
+    "ab": "абитурие́нт",
+    "lat": "abiturient",
+    "tr": "aday öğrenci"
+  },
+  {
+    "ru": "аблати́в",
+    "ab": "аблати́в",
+    "lat": "ablativ",
+    "tr": "ablatif"
+  },
+  {
+    "ru": "абла́ут",
+    "ab": "абла́ут",
+    "lat": "ablaut",
+    "tr": "ablaut"
+  },
+  {
+    "ru": "абонеме́нт",
+    "ab": "абонеме́нт",
+    "lat": "abonement",
+    "tr": "abonman"
+  },
+  {
+    "ru": "абоне́нт",
+    "ab": "аха́рхәаҩ",
+    "lat": "akharkhəaw",
+    "tr": "abone"
+  },
+  {
+    "ru": "аборда́ж",
+    "ab": "аборда́ж",
+    "lat": "abordazh",
+    "tr": "aborda"
+  },
+  {
+    "ru": "абориге́н",
+    "ab": "ашьагәы́ҭуаҩ",
+    "lat": "ash'agəyt'uaw",
+    "tr": "yerli"
+  },
+  {
+    "ru": "або́рт",
+    "ab": "абгара́",
+    "lat": "abgara",
+    "tr": "kürtaj"
+  },
+  {
+    "ru": "а́бракадабра",
+    "ab": "ахшы́ҩҵакдара",
+    "lat": "akhshywts'akdara",
+    "tr": "abrakadabra"
+  },
+  {
+    "ru": "абре́к",
+    "ab": "а́брагь",
+    "lat": "abrag'",
+    "tr": "abrek"
+  },
+  {
+    "ru": "абрико́с",
+    "ab": "аҷара́м",
+    "lat": "ach'aram",
+    "tr": "kayısı"
+  },
+  {
+    "ru": "а́брис",
+    "ab": "акәырша́шьҭа",
+    "lat": "akəyrshash't'a",
+    "tr": "eskiz"
+  },
+  {
+    "ru": "абсе́нт",
+    "ab": "абсе́нт",
+    "lat": "absent",
+    "tr": "absint"
+  },
+  {
+    "ru": "абси́да",
+    "ab": "абси́да",
+    "lat": "absida",
+    "tr": "apse"
+  },
+  {
+    "ru": "абсолю́т",
+    "ab": "абсолиу́т",
+    "lat": "absoliut",
+    "tr": "mutlak"
+  },
+  {
+    "ru": "абсолюти́зм",
+    "ab": "абсолиути́зм",
+    "lat": "absoliutizm",
+    "tr": "mutlakiyet"
+  },
+  {
+    "ru": "абсу́рд",
+    "ab": "абсу́рд",
+    "lat": "absurd",
+    "tr": "saçmalık"
+  },
+  {
+    "ru": "абха́з",
+    "ab": "аԥсуа",
+    "lat": "ap'sua",
+    "tr": "Abhaz"
+  },
+  {
+    "ru": "абхазове́д",
+    "ab": "а́ԥсуаҭҵааҩы",
+    "lat": "ap'suat'ts'aawy",
+    "tr": "Abhazbilimci"
+  },
+  {
+    "ru": "абха́зский",
+    "ab": "а́ԥсуа",
+    "lat": "ap'sua",
+    "tr": "Abhazca"
+  },
+  {
+    "ru": "аванга́рд",
+    "ab": "аԥхьагы́ла",
+    "lat": "ap'h'agyla",
+    "tr": "avangard"
+  },
+  {
+    "ru": "ава́нс",
+    "ab": "аза́ахә",
+    "lat": "azaakhə",
+    "tr": "avans"
+  },
+  {
+    "ru": "авантю́ра",
+    "ab": "авантиу́ра",
+    "lat": "avantiura",
+    "tr": "macera"
+  },
+  {
+    "ru": "ава́р",
+    "ab": "ауа́р",
+    "lat": "auar",
+    "tr": "Avar"
+  },
+  {
+    "ru": "ава́рия",
+    "ab": "а́машәыр",
+    "lat": "amashəyr",
+    "tr": "kaza"
+  },
+  {
+    "ru": "а́вгуст",
+    "ab": "на́нҳәа",
+    "lat": "nanhəa",
+    "tr": "Ağustos"
+  },
+  {
+    "ru": "австрали́ец",
+    "ab": "австра́лиауаҩ",
+    "lat": "avstraliauaw",
+    "tr": "Avustralyalı"
+  },
+  {
+    "ru": "австри́ец",
+    "ab": "а́встриауаҩ",
+    "lat": "avstriauaw",
+    "tr": "Avusturyalı"
+  },
+  {
+    "ru": "автомоби́ль",
+    "ab": "амашьы́на",
+    "lat": "amash'yna",
+    "tr": "otomobil"
+  },
+  {
+    "ru": "автоно́мия",
+    "ab": "автономиа",
+    "lat": "avtonomia",
+    "tr": "özerklik"
+  },
+  {
+    "ru": "автостра́да",
+    "ab": "автомҩаду́",
+    "lat": "avtomwadu",
+    "tr": "otoyol"
+  },
+  {
+    "ru": "автохто́н",
+    "ab": "ашьагәы́ҭуаҩ",
+    "lat": "ash'agəyt'uaw",
+    "tr": "otokton"
+  },
+  {
+    "ru": "ага́ва",
+    "ab": "ага́ва",
+    "lat": "agava",
+    "tr": "agav"
+  },
+  {
+    "ru": "ага́т",
+    "ab": "ага́т",
+    "lat": "agat",
+    "tr": "akik"
+  },
+  {
+    "ru": "аге́нт",
+    "ab": "аге́нт",
+    "lat": "agent",
+    "tr": "ajan"
+  },
+  {
+    "ru": "аге́нтство",
+    "ab": "аге́нтра",
+    "lat": "agentra",
+    "tr": "ajans"
+  },
+  {
+    "ru": "агита́тор",
+    "ab": "агита́тор",
+    "lat": "agitator",
+    "tr": "ajitatör"
+  },
+  {
+    "ru": "агита́ция",
+    "ab": "агита́циа",
+    "lat": "agitatsia",
+    "tr": "ajitasyon"
+  },
+  {
+    "ru": "а́гнец",
+    "ab": "асы́с",
+    "lat": "asys",
+    "tr": "kuzu"
+  },
+  {
+    "ru": "агно́стик",
+    "ab": "агно́стик",
+    "lat": "agnostik",
+    "tr": "agnostik"
+  },
+  {
+    "ru": "аго́ния",
+    "ab": "аԥсхы́хра",
+    "lat": "ap'skhykhra",
+    "tr": "can çekişme"
+  },
+  {
+    "ru": "агра́рий",
+    "ab": "а́дгьылрацәа́",
+    "lat": "adg'ylratsəa",
+    "tr": "tarımcı"
+  },
+  {
+    "ru": "агра́рный",
+    "ab": "ақы́ҭанхамҩатә",
+    "lat": "aqyt'ankhamwatə",
+    "tr": "tarımsal"
+  },
+  {
+    "ru": "агроно́м",
+    "ab": "агро́ном",
+    "lat": "agronom",
+    "tr": "agronom"
+  },
+  {
+    "ru": "агроно́мия",
+    "ab": "агроно́миа",
+    "lat": "agronomia",
+    "tr": "agronomi"
+  },
+  {
+    "ru": "агрохими́я",
+    "ab": "агрохи́миа",
+    "lat": "agrokhimia",
+    "tr": "agrokimya"
+  },
+  {
+    "ru": "агу́л",
+    "ab": "агу́л",
+    "lat": "agul",
+    "tr": "Agul"
+  },
+  {
+    "ru": "ада́жио",
+    "ab": "ада́жио",
+    "lat": "adazhio",
+    "tr": "adagio"
+  },
+  {
+    "ru": "ада́птер",
+    "ab": "ада́птер",
+    "lat": "adapter",
+    "tr": "adaptör"
+  },
+  {
+    "ru": "адвока́т",
+    "ab": "адукат",
+    "lat": "adukat",
+    "tr": "avukat"
+  },
+  {
+    "ru": "адеква́тный",
+    "ab": "иа́қәшәо",
+    "lat": "iaqəshəo",
+    "tr": "uygun"
+  },
+  {
+    "ru": "адено́ма",
+    "ab": "адено́ма",
+    "lat": "adenoma",
+    "tr": "adenom"
+  },
+  {
+    "ru": "аджи́ка",
+    "ab": "аџьы́ка",
+    "lat": "adzh'yka",
+    "tr": "acika"
+  },
+  {
+    "ru": "адмира́л",
+    "ab": "адмира́л",
+    "lat": "admiral",
+    "tr": "amiral"
+  },
+  {
+    "ru": "ады́г",
+    "ab": "ады́га",
+    "lat": "adyga",
+    "tr": "Adıge"
+  },
+  {
+    "ru": "адыге́ец",
+    "ab": "аеды́гьа",
+    "lat": "aedyg'a",
+    "tr": "Adıge"
+  },
+  {
+    "ru": "ажиота́ж",
+    "ab": "а́илыхара",
+    "lat": "ailykhara",
+    "tr": "aşırı ilgi"
+  },
+  {
+    "ru": "аза́рт",
+    "ab": "а́лашыҩкра",
+    "lat": "alashywkra",
+    "tr": "hırs"
+  },
+  {
+    "ru": "а́збука",
+    "ab": "а́нбан",
+    "lat": "anban",
+    "tr": "alfabe"
+  },
+  {
+    "ru": "азербайджа́нец",
+    "ab": "азербаиџьан",
+    "lat": "azerbaidzh'an",
+    "tr": "Azerbaycanlı"
+  },
+  {
+    "ru": "а́зия",
+    "ab": "А́зиа",
+    "lat": "azia",
+    "tr": "Asya"
+  },
+  {
+    "ru": "а́зимут",
+    "ab": "а́зимут",
+    "lat": "azimut",
+    "tr": "azimut"
+  },
+  {
+    "ru": "азо́т",
+    "ab": "аԥсҭа́м",
+    "lat": "ap'st'am",
+    "tr": "azot"
+  },
+  {
+    "ru": "айва́",
+    "ab": "аби́а",
+    "lat": "abia",
+    "tr": "ayva"
+  },
+  {
+    "ru": "айра́н",
+    "ab": "ахарҵәы́",
+    "lat": "akharts'əy",
+    "tr": "ayran"
+  },
+  {
+    "ru": "а́йсберг",
+    "ab": "аҵа́ашьха",
+    "lat": "ats'aash'kha",
+    "tr": "buzdağı"
+  },
+  {
+    "ru": "а́ист",
+    "ab": "а́мшзырҳага",
+    "lat": "amshzyrhaga",
+    "tr": "leylek"
+  },
+  {
+    "ru": "академи́к",
+    "ab": "акаде́мик",
+    "lat": "akademik",
+    "tr": "akademi üyesi"
+  },
+  {
+    "ru": "акаде́мия",
+    "ab": "акаде́миа",
+    "lat": "akademia",
+    "tr": "akademi"
+  },
+  {
+    "ru": "ака́ция",
+    "ab": "ақәы́ц",
+    "lat": "aqəyts",
+    "tr": "akasya"
+  },
+  {
+    "ru": "аква́риум",
+    "ab": "аква́риум",
+    "lat": "akvarium",
+    "tr": "akvaryum"
+  },
+  {
+    "ru": "акведу́к",
+    "ab": "акведу́к",
+    "lat": "akveduk",
+    "tr": "su kemeri"
+  },
+  {
+    "ru": "аккомпане́мент",
+    "ab": "а́цҳәара",
+    "lat": "atshəara",
+    "tr": "eşlik"
+  },
+  {
+    "ru": "акко́рд",
+    "ab": "акко́рд",
+    "lat": "akkord",
+    "tr": "akor"
+  },
+  {
+    "ru": "аккордео́н",
+    "ab": "аккордео́н",
+    "lat": "akkordeon",
+    "tr": "akordeon"
+  },
+  {
+    "ru": "аккредити́в",
+    "ab": "аккредити́в",
+    "lat": "akkreditiv",
+    "tr": "akreditif"
+  },
+  {
+    "ru": "аку́ла",
+    "ab": "аку́ла",
+    "lat": "akula",
+    "tr": "köpekbalığı"
+  },
+  {
+    "ru": "аку́стика",
+    "ab": "аку́стика",
+    "lat": "akustika",
+    "tr": "akustik"
+  },
+  {
+    "ru": "акуше́р",
+    "ab": "аԥҳәы́сеилыргаҩ",
+    "lat": "ap'həyseilyrgaw",
+    "tr": "ebe"
+  },
+  {
+    "ru": "а́кцент",
+    "ab": "а́қәыӷәӷәара",
+    "lat": "aqəyghəghəara",
+    "tr": "aksan"
+  },
+  {
+    "ru": "а́кция",
+    "ab": "а́кциа",
+    "lat": "aktsia",
+    "tr": "hisse senedi"
+  },
+  {
+    "ru": "акци́з",
+    "ab": "акци́з",
+    "lat": "aktsiz",
+    "tr": "tüketim vergisi"
+  },
+  {
+    "ru": "акционе́р",
+    "ab": "акционе́р",
+    "lat": "aktsioner",
+    "tr": "hissedar"
+  },
+  {
+    "ru": "аку́н",
+    "ab": "аку́н",
+    "lat": "akun",
+    "tr": "ozan"
+  },
+  {
+    "ru": "алба́нец",
+    "ab": "арнау́ҭ",
+    "lat": "arnaut'",
+    "tr": "Arnavut"
+  },
+  {
+    "ru": "а́лгебра",
+    "ab": "а́лгебра",
+    "lat": "algebra",
+    "tr": "cebir"
+  },
+  {
+    "ru": "алгори́тм",
+    "ab": "алгори́тм",
+    "lat": "algoritm",
+    "tr": "algoritma"
+  }
+]
