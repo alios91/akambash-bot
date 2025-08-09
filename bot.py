@@ -1,4 +1,4 @@
-# bot.py — webhook, подключает akambash_extra (не меняем твою версию aiogram)
+# bot.py — webhook, подключает akambash_extra (поддержка words.json и fallback на akambash_dict.json)
 import os
 from aiohttp import web
 from aiogram import Bot, Dispatcher
@@ -6,11 +6,10 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 
-# >>> новая строка: подключаем модуль с фичами
 from akambash_extra import install as install_akambash_extra
 
 BOT_TOKEN    = os.getenv("BOT_TOKEN")
-BASE_URL     = os.getenv("BASE_URL")              # напр. https://your-app.onrender.com
+BASE_URL     = os.getenv("BASE_URL")               # напр. https://your-app.onrender.com
 WEBHOOK_PATH = os.getenv("WEBHOOK_PATH", "/webhook")
 PORT         = int(os.getenv("PORT", "8080"))
 
@@ -25,7 +24,7 @@ async def app_factory() -> web.Application:
     bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher()
 
-    # >>> одна строка: добавляем новые хендлеры (язык/кнопка/слова)
+    # подключаем новые хендлеры (язык/кнопка/слова)
     install_akambash_extra(dp)
 
     # настраиваем вебхук

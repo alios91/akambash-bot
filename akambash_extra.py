@@ -4,7 +4,6 @@
 # - reply-кнопку: слово / word / kelime
 # - /new и кнопка -> карточка AB + LAT + RU + TR
 # - инлайн «➡️ Ещё слово»
-
 from __future__ import annotations
 import json, random
 from pathlib import Path
@@ -17,9 +16,16 @@ from aiogram.types import (
     InlineKeyboardMarkup, InlineKeyboardButton,
 )
 
-# --- конфиг ---
-DICT_PATH = Path("akambash_dict.json")  # лежит рядом с bot.py
+# --- словарь: сначала words.json, если нет — akambash_dict.json ---
+PRIMARY_DICT = Path("words.json")
+FALLBACK_DICT = Path("akambash_dict.json")
 
+def _dict_path() -> Path:
+    if PRIMARY_DICT.exists():
+        return PRIMARY_DICT
+    return FALLBACK_DICT
+
+# --- конфиг кнопок ---
 LABELS = {
     "RU": {"word_btn": "слово", "placeholder": "Нажми — слово"},
     "EN": {"word_btn": "word",  "placeholder": "Tap — word"},
@@ -44,9 +50,11 @@ _dict_cache: list[dict] | None = None
 def load_dict() -> list[dict]:
     global _dict_cache
     if _dict_cache is None:
-        if not DICT_PATH.exists():
-            DICT_PATH.write_text("[]", encoding="utf-8")
-        _dict_cache = json.loads(DICT_PATH.read_text(encoding="utf-8"))
+        p = _dict_path()
+        if not p.exists():
+            # создадим пустую заготовку, чтобы бот не падал
+            p.write_text("[]", encoding="utf-8")
+        _dict_cache = json.loads(p.read_text(encoding="utf-8"))
         for i, row in enumerate(_dict_cache):
             row.setdefault("id", i)
     return _dict_cache
@@ -76,9 +84,7 @@ def build_word_text(entry: dict) -> str:
 
 def more_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="➡️ Ещё слово", callback_data="word:more")]
-        ]
+        inline_keyboard=[[InlineKeyboardButton(text="➡️ Ещё слово", callback_data="word:more")]]
     )
 
 router = Router(name="akambash_extra")
@@ -86,7 +92,7 @@ router = Router(name="akambash_extra")
 async def send_new_word(message: Message) -> None:
     data = load_dict()
     if not data:
-        await message.answer("Словарь пуст. Добавь записи в akambash_dict.json")
+        await message.answer("Словарь пуст. Добавь записи в words.json или akambash_dict.json")
         return
     idx = _pick_index(message.from_user.id, len(data))
     entry = data[idx]
@@ -124,5 +130,5 @@ async def cb_more(callback: CallbackQuery):
     await callback.answer()
 
 def install(dp):
-    """Подключи меня одной строкой в твоём bot.py"""
+    # Подключение роутера из этого файла
     dp.include_router(router)
